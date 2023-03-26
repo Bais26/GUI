@@ -1,6 +1,5 @@
 package Connect;
 
-import Model.RespondModel;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -23,22 +22,22 @@ public class FirstConnect {
         for (int i = 0; i < responseJSON.length(); i++) {
 
             RespondModel resmodel = new RespondModel();
-//            System.out.println("ANJIM "+resmodel);
-            JSONObject myJSONObject =responseJSON.getJSONObject(i);
-//            System.out.println("ANJIM "+myJSONObject);
 
-            String Harga = myJSONObject.getString("i_sell");
-            resmodel.setI_sell(Harga);
+            JSONObject myJSONObject =responseJSON.getJSONObject(i);
+
+
+            String Barang = myJSONObject.getString("i_name");
+            resmodel.setI_name(Barang);
             RespondModel.add(resmodel);
 
-            int HargaInt= Integer.parseInt(Harga);
+            int HargaInt= Integer.parseInt(Barang);
             if (HargaInt < 2000){
                 count++;
             }
         }
 
         for(int index=0; index<RespondModel.size(); index++){
-            int harga = Integer.parseInt(RespondModel.get(index).getI_sell());
+            int harga = Integer.parseInt(RespondModel.get(index).getI_name());
             if(harga < 2000){
                 System.out.println("Harga: " + harga);
             }
